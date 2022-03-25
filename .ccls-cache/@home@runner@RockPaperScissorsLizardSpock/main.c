@@ -30,11 +30,9 @@ int main(){
     char guess[10];
     char arr[5][10]={"rock","paper","scissors","spock","lizard"};
     srand(time(0));// Gentrates random number each time
-    i = rand()%6 + 0; // Generates a random number between 1 and 100;;
-    printf("%s\n",arr[i]);
+    i = rand()%5 + 0; // Generates a random number between 1 and 100;;
     printf("Choose from rock paper scissors lizard and spock\n");
     gets(guess);
-    printf("%s\n",guess);
     for(x=0;x<6;x++){
       if(x==5){
         printf("Invalid input\n");
@@ -42,24 +40,28 @@ int main(){
       }
       int result=strcmp(guess,arr[x]);
       if(result==0){
-        printf("%d\n",x);
         break;
       }
     }
+    printf("Computer chose %s\n",arr[i]);
     result=game(x,i);
     if(result==0){
-      printf("tie");
+      printf("It is a tie");
+      goto end;
     }
     else if(result==1){
-      printf("Win");
+      printf("You Won");
+      goto end;
     }
     else if(result==-1){
-      printf("Loose");
+      printf("You Lost");
+      goto end;
     }
   else{
     printf("Error");
   }
   error:
     printf("Error try again\n");
+  end:
     return 0;
       }
